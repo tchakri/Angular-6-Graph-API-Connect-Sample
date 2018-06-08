@@ -1,6 +1,23 @@
-# ANGULAR6GRAPHAPICONNECT
+# ANGULAR 6, RXJS 6, GRAPH EXPLORER API CONNECT
+
+First Register your app in Microsoft Azure AD. For reference: 
+https://developer.microsoft.com/en-us/graph/docs/concepts/auth_register_app_v2
+
+You can make use of sample queries to Graph API using this url:
+https://developer.microsoft.com/en-us/graph/graph-explorer
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.0.1.
+
+## Run this project
+
+1. Clone or Download the code to your folder.
+2. Open `configs.ts` file under location: `\ANGULAR6-GRAPH-API-CONNECT\src\app\shared`.
+3. Update your `appId` (example: in place of 'YOUR-CLIENTID-OF-REGISTERED-APP' to 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx) and then save the file.
+4. Open Command Prompt (Windows + R => type 'cmd' => Enter) and change directory to the downloaded location, say, c:\yourpath\ANGULAR6-GRAPH-API-CONNECT.
+5. Type command: `npm install` and then press `Enter`; node_modules gets downloaded.
+6. Type command: `ng serve -o` and then press `Enter` to run the project.
+7. Browser will open and click on `Connect` button. A popup gets open for authentication.
+8. Login to your personal account.
 
 ## Development server
 

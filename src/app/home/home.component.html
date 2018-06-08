@@ -1,0 +1,125 @@
+<div class="ms-Grid-row">
+    <div class="ms-NavBar">
+        <ul class="ms-NavBar-items">
+            <li class="ms-NavBar-item">Angular 6 and Microsoft Graph Connection sample</li>
+            <li class="ms-NavBar-item ms-NavBar-item--right" (click)="onLogout()">
+                <i class="ms-Icon ms-Icon--x"></i> Disconnect</li>
+        </ul>
+    </div>
+    <div class="container-fluid" style="padding: 20px;">
+        <div class="card" style="border: 0;">
+            <div class="card-block">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h4>1. Load the picture and user details one time and store in the global object</h4>
+                        <ng-container *ngIf="_explorerValues?.showImage; else spinner1">
+                            <img class="img-placeholder" [src]="profilePic">
+                        </ng-container>
+                        <ng-template #spinner1>
+                            <div class="fa-2x">
+                                <i class="fas fa-circle-notch fa-spin"></i>
+                            </div>
+                        </ng-template>
+                        <div *ngIf="me">
+                            <h5 class="ms-font-xxl ms-fontWeight-semibold">Hi, {{ _explorerValues?.authentication.user.displayName }}!</h5>
+                            <p class="ms-font-xl">You're now connected to Microsoft Graph. Click the button below to send a message from your account
+                                using the Microsoft Graph API. </p>
+                            <div>
+                                <table>
+                                    <tr>
+                                        <td>
+                                            <i class="fa fa-user-md fa-1" style="font-size: 20px;" title="Job Title"></i>
+                                        </td>
+                                        <td style="text-align: left; padding-left:5px;">
+                                            <span>{{ _explorerValues?.authentication.user.jobTitle || '-'}}</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <i class="fa fa-briefcase fa-1" title="Department"></i>
+                                        </td>
+                                        <td style="text-align: left; padding-left:5px;">
+                                            <span>{{ _explorerValues?.authentication.user.department || '-' }}</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <i class="fa fa-envelope fa-1" title="Mail"></i>
+                                        </td>
+                                        <td style="text-align: left; padding-left:5px;">
+                                            <span>{{ _explorerValues?.authentication.user.mail || '-'}}</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <i class="fa fa-mobile fa-1" style="font-size: 25px;" title="Mobile Phone"></i>
+                                        </td>
+                                        <td style="text-align: left; padding-left:5px;">
+                                            <span>{{ _explorerValues?.authentication.user.mobilePhone || '-'}}</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <i class="fa fa-building fa-1" title="Office Location"></i>
+                                        </td>
+                                        <td style="text-align: left; padding-left:5px;">
+                                            <span>{{ _explorerValues?.authentication.user.officeLocation || '-'}}</span>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div class="ms-TextField">
+                                <input value="{{ _explorerValues?.authentication.user.mail }}" class="ms-TextField-field" #email>
+                            </div>
+                            <button class="ms-Button" (click)="onSendMail(mail = email.value)" [disabled]="!dataLoaded">
+                                <span class="ms-Button-label">Send mail</span>
+                            </button>
+                            <div *ngIf="this.emailSent">
+                                <p class="ms-font-m ms-fontColor-green">Successfully sent an email to {{ _explorerValues?.authentication.user.mail }}!</p>
+                            </div>
+                            <div *ngIf="!this.emailSent && !dataLoaded">
+                                <p class="ms-font-m ms-fontColor-redDark">Something went wrong, couldn't send an email.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid" style="padding: 20px;">
+        <div class="card" style="border: 0;">
+            <div class="card-block">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h4>2. Using Individual Graph API Service Calls</h4>
+                        <ng-container *ngIf="isImageLoaded; else spinner">
+                            <img class="img-placeholder" [src]="profilePicUrl">
+                        </ng-container>
+                        <ng-template #spinner>
+                            <div class="fa-2x">
+                                <i class="fas fa-circle-notch fa-spin"></i>
+                            </div>
+                        </ng-template>
+                        <div *ngIf="me">
+                            <h5 class="ms-font-xxl ms-fontWeight-semibold">Hi, {{ displayName }}!</h5>
+                            <p class="ms-font-xl">You're now connected to Microsoft Graph. Click the button below to send a message from your account
+                                using the Microsoft Graph API. </p>
+                            <div class="ms-TextField">
+                                <input value="{{mail || userPrincipalName}}" class="ms-TextField-field" #email>
+                            </div>
+                            <button class="ms-Button" (click)="onSendMail(mail = email.value)" [disabled]="!me">
+                                <span class="ms-Button-label">Send mail</span>
+                            </button>
+                            <div *ngIf="this.emailSent">
+                                <p class="ms-font-m ms-fontColor-green">Successfully sent an email to {{ mail || userPrincipalName }}!</p>
+                            </div>
+                            <div *ngIf="!this.emailSent && !me">
+                                <p class="ms-font-m ms-fontColor-redDark">Something went wrong, couldn't send an email.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
