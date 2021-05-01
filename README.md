@@ -1,4 +1,4 @@
-# ANGULAR 6, RXJS 6, GRAPH EXPLORER API CONNECT
+# ANGULAR 11, GRAPH EXPLORER API CONNECT
 
 First Register your app in Microsoft Azure AD. For reference: 
 https://developer.microsoft.com/en-us/graph/docs/concepts/auth_register_app_v2
@@ -6,7 +6,7 @@ https://developer.microsoft.com/en-us/graph/docs/concepts/auth_register_app_v2
 You can make use of sample queries to Graph API using this url:
 https://developer.microsoft.com/en-us/graph/graph-explorer
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.0.1.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.11.
 
 ## Run this project
 
